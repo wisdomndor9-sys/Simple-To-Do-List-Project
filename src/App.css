@@ -137,20 +137,16 @@ body.dark select {
 .task-text {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
 }
 
-.delete-button {
-  background: #0d6efd;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  font-size: 18px;
-  line-height: 1;
+.bottom-row,
+.bottom-row ul {
+  width: 100%;
+}
+
+.bottom-row ul {
   padding: 0;
-  margin-left: 8px;
-  flex-shrink: 0;
-  cursor: pointer;
+  margin: 0;
 }
