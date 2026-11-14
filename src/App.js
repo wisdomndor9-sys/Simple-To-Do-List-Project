@@ -50,3 +50,49 @@ function App() {
         <div className="top-row">
           <select id='filterselect' value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="incomplete">Incomplete</option>
+          </select>
+
+          <div className="search-wrapper">
+            <FaSearch className="search-icon" />
+            <input
+              type="text"
+              id="searchInput"
+              placeholder='search'
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+
+          <div className="moon-box">
+            <button className='toggle ui-color' onClick={toggleDarkMode}>
+              <FaRegMoon className="moon-icon" />
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <TaskComp
+            tasks={filteredTasks}
+            toggleComplete={toggleComplete}
+            deleteTask={deleteTask}
+          />
+        </div>
+      </div>
+
+      <button className="add-button" onClick={() => setShowBox(prev => !prev)}>
+        <FaPlus />
+      </button>
+
+      {showbox && (
+        <NewNote
+          onSave={addTask}
+          onCancel={() => setShowBox(false)}
+        />
+      )}
+    </div>
+  );
+}
+
+export default App;
