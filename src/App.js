@@ -31,6 +31,10 @@ function App() {
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
   };
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(t => t.id !== id));
+  };
+
   const filteredTasks = tasks.filter(task => {
     const matchesSearch = task.text.toLowerCase().includes(searchQuery.toLowerCase());
     if (filter === 'completed') return matchesSearch && task.completed;
@@ -46,45 +50,3 @@ function App() {
         <div className="top-row">
           <select id='filterselect' value={filter} onChange={(e) => setFilter(e.target.value)}>
             <option value="all">All</option>
-            <option value="completed">Completed</option>
-            <option value="incomplete">Incomplete</option>
-          </select>
-
-          <div className="search-wrapper">
-            <FaSearch className="search-icon" />
-            <input
-              type="text"
-              id="searchInput"
-              placeholder='search'
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-
-          <div className="moon-box">
-            <button className='toggle ui-color' onClick={toggleDarkMode}>
-              <FaRegMoon className="moon-icon" />
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <TaskComp tasks={filteredTasks} toggleComplete={toggleComplete} />
-        </div>
-      </div>
-
-      <button className="add-button" onClick={() => setShowBox(prev => !prev)}>
-        <FaPlus />
-      </button>
-
-      {showbox && (
-        <NewNote
-          onSave={addTask}
-          onCancel={() => setShowBox(false)}
-        />
-      )}
-    </div>
-  );
-}
-
-export default App;
