@@ -10,7 +10,7 @@ function App() {
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [darkmode, setDarkMode] = useState(false);
+  const [, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(prev => {
